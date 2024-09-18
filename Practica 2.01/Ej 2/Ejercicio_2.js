@@ -8,11 +8,11 @@ var puntosMaria = [97,134,105] /*puntos*/
 //? Soluciones
 console.log("La media del equipo de Juan es: "+calculoMediaPuntos(puntosJuan))
 console.log("La media del equipo de Miguel es: "+calculoMediaPuntos(puntosMiguel))
-console.log("La media del equipo de Maria es: "+calculoMediaPuntos(puntosMaria))
+console.log("La media del equipo de María es: "+calculoMediaPuntos(puntosMaria))
 console.log(calculoGanador(puntosJuan, puntosMiguel, puntosMaria));
 
 //* Funciones
-//la funcion recibe el array de los puntos del equipo y recorre todo el array sumando sus datos y guardandolo en suma y despues hacemos la media con el tamaño del array
+//La funcion recibe el array de los puntos del equipo y recorre todo el array sumando sus datos y guardandolo en suma y despues hacemos la media con el tamaño del array
 function calculoMediaPuntos(puntosTotales) {
     let sumaTot= 0
 // Recorremos el array con forEach para sumar los puntos
