@@ -9,7 +9,7 @@ var puntosMaria = [97,134,105] /*puntos*/
 console.log("La media del equipo de Juan es: "+calculoMediaPuntos(puntosJuan))
 console.log("La media del equipo de Miguel es: "+calculoMediaPuntos(puntosMiguel))
 console.log("La media del equipo de Maria es: "+calculoMediaPuntos(puntosMaria))
-console.log(calculoGanador(puntosJuan, puntosMiguel));
+console.log(calculoGanador(puntosJuan, puntosMiguel, puntosMaria));
 
 //* Funciones
 //la funcion recibe el array de los puntos del equipo y recorre todo el array sumando sus datos y guardandolo en suma y despues hacemos la media con el tamaño del array
@@ -28,13 +28,15 @@ function calculoGanador(equipoJuan, equipoMiguel, equipoMaria) {
     let mediaJuan = calculoMediaPuntos(equipoJuan);
     let mediaMiguel = calculoMediaPuntos(equipoMiguel);
     let mediaMaria = calculoMediaPuntos(equipoMaria);
-    
-    if (mediaJuan > mediaMiguel) {
+
+    if (mediaJuan > mediaMiguel && mediaJuan > mediaMaria) {
         return `Ha ganado el equipo de Juan con una media de ${mediaJuan.toFixed(2)}`;
-    } else if (mediaMiguel > mediaJuan) {
+    } else if (mediaMiguel > mediaJuan && mediaMiguel > mediaMaria) {
         return `Ha ganado el equipo de Miguel con una media de ${mediaMiguel.toFixed(2)}`;
+    } else if (mediaMaria > mediaJuan && mediaMaria > mediaMiguel) {
+        return `Ha ganado el equipo de María con una media de ${mediaMaria.toFixed(2)}`;
     } else {
-        return `Es un empate con una media de ${mediaJuan.toFixed(2)}`;
+        return `Es un empate entre varios equipos con una media de ${Math.max(mediaJuan, mediaMiguel, mediaMaria).toFixed(2)}`;
     }
 }
 
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Calculamos las medias
     let mediaJuan = calculoMediaPuntos(puntosJuan);
     let mediaMiguel = calculoMediaPuntos(puntosMiguel);
+    let mediaMaria = calculoMediaPuntos(puntosMaria);
 
     // Obtenemos el elemento para mostrar los resultados
     let resultadoElemento = document.getElementById("resultado");
@@ -53,7 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
     resultadoElemento.innerHTML = `
         La media del equipo de Juan es: ${mediaJuan.toFixed(2)}<br>
         La media del equipo de Miguel es: ${mediaMiguel.toFixed(2)}<br>
-        ${calculoGanador(puntosJuan, puntosMiguel)}
+        La media del equipo de María es: ${mediaMaria.toFixed(2)}<br>
+
+        ${calculoGanador(puntosJuan, puntosMiguel, puntosMaria)}
     `;
 });
 
