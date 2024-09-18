@@ -7,11 +7,11 @@ var pesoMarcos = 80 /*Kg*/
 var alturaJuan = 150 /*cm*/
 var pesoJuan = 57 /*Kg*/
 
-// var marcosEsMayor = null /*variable que indica si es mayor marcos en IMC*/
-
 //? Solución
-console.log("¿Tiene Marcos un IMC mayor que el de Juan?: "+calculoPeso(alturaMarcos, pesoMarcos, alturaJuan, pesoJuan))
+console.log("¿Tiene Marcos un IMC mayor que el de Juan?: "+ calculoPeso(alturaMarcos, pesoMarcos, alturaJuan, pesoJuan))
 
+
+//* Funciones
 function calculoPeso(alturaMarcosF, pesoMarcosF, alturaJuanF, pesoJuanF) {
     
     let imcMarcos = pesoMarcosF / Math.pow(alturaMarcosF, 2); // Convertimos cm a metros
