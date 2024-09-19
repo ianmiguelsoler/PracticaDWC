@@ -8,7 +8,7 @@ var alturaJuan = 150 /*cm*/
 var pesoJuan = 57 /*Kg*/
 
 //? Solución
-console.log("¿Tiene Marcos un IMC mayor que el de Juan?: "+ calculoPeso(alturaMarcos, pesoMarcos, alturaJuan, pesoJuan))
+console.log(`¿Tiene Marcos un IMC mayor que el de Juan?: ${calculoPeso(alturaMarcos, pesoMarcos, alturaJuan, pesoJuan)}`)
 
 
 //* Funciones

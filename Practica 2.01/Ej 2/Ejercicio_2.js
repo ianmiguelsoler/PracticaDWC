@@ -6,9 +6,9 @@ var puntosMiguel = [116,94,123] /*puntos*/
 var puntosMaria = [97,134,105] /*puntos*/
 
 //? Soluciones
-console.log("La media del equipo de Juan es: "+calculoMediaPuntos(puntosJuan))
-console.log("La media del equipo de Miguel es: "+calculoMediaPuntos(puntosMiguel))
-console.log("La media del equipo de María es: "+calculoMediaPuntos(puntosMaria))
+console.log(`La media del equipo de Juan es: ${calculoMediaPuntos(puntosJuan)}`)
+console.log(`La media del equipo de Miguel es: ${calculoMediaPuntos(puntosMiguel)}`)
+console.log(`La media del equipo de María es: ${calculoMediaPuntos(puntosMaria)}`)
 console.log(calculoGanador(puntosJuan, puntosMiguel, puntosMaria));
 
 //* Funciones
@@ -61,4 +61,3 @@ document.addEventListener("DOMContentLoaded", function() {
         ${calculoGanador(puntosJuan, puntosMiguel, puntosMaria)}
     `;
 });
-
