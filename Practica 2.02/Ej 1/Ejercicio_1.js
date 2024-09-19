@@ -13,9 +13,7 @@ function sumar() {
       console.error("Error: Debes proporcionar al menos dos números.");
       return;
     }
-  
     let suma = 0;
-  
     // Recorrer todos los argumentos
     for (let i = 0; i < arguments.length; i++) {
       // Comprobar si el argumento es un número
@@ -23,10 +21,8 @@ function sumar() {
         console.error(`Error: El argumento en la posición ${i} no es un número.`);
         return;
       }
-  
       suma += arguments[i];
     }
-  
     // Mostrar la suma debidamente formateada
     console.log(`La suma de los números es: ${suma}`);
   }
