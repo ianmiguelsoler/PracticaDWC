@@ -35,10 +35,11 @@ var discente = {
 comprobarTodo(discente)
 
 //* Funciones
+//Funcion que hace todas las llamadas para comprobar que funcionen
 function comprobarTodo(discente) {
     console.log("Comprobación código Discente: \n");
 
-    // Imprimir propiedades simples
+    // Imprimendo propiedades simples
     for (let clave in discente) {
         if (typeof discente[clave] !== 'function') {
             console.log(`${clave}: ${JSON.stringify(discente[clave])}`);
