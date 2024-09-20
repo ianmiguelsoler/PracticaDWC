@@ -4,7 +4,7 @@
 var numeroTabla = 6;
 
 //? Soluciones
-// Imprime las tablas desde el número 4 hasta el 2
+// Imprime las tablas desde el número 6 hasta el 2
 imprimeTablas(numeroTabla, calculaTabla);
 
 //* Funciones
