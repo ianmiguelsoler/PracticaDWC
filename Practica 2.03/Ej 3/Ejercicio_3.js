@@ -11,19 +11,26 @@ var discente = {
         segunda: 8,
         tercera: 9
     },
+    //Calcula la media de forma interna con el this
     getCalcularMedia: function() {
         console.log("La nota media es: ");
         return (this.notas.primera + this.notas.segunda + this.notas.tercera) / 3;
     },
+    //obtiene las aficiones mostrandolas con un foreach
     getAficiones: function() {
         console.log(`Las Aficiones Son Estas:\n`);
         this.aficiones.forEach(element => {
             console.log(element);
         });
     },
+    //obtiene los informes mostrandolos con pantalla 
     getInforme: function() {
         console.log(`El informe que ha pedido es este: \n`);
         for (let clave in this) {
+            //El operador typeof devuelve el tipo de datos del valor de esa propiedad
+            //Si this[clave] es una función, typeof devolverá "function".
+            // Si this[clave] es una cadena, devolverá "string".
+            // Si es un número, devolverá "number", etc.
             if (typeof this[clave] !== 'function') {
                 console.log(`${clave}: ${JSON.stringify(this[clave])}`);
             }
