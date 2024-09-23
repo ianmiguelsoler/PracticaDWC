@@ -49,17 +49,31 @@ function creaCurso(nombreCurso, anoCurso, descCurso, alumnado) {
         anoCurso: anoCurso,
         descCurso: descCurso,
         alumnado: alumnado,
+        objetoPrueba: {
+            pruebaInt: 1,
+            pruebaString: "Me llamo Pepito",
+            pruebaString2: "Me llamo Jose",
+            pruebaInt2: 3832,
+
+        },
         // Método para matricular un discente al curso
         matricular: function (discenteM) {
             this.alumnado.push(discenteM);
-        }
+        },
+        // objetoPrueba2: {
+        //     pruebaInt: 1,
+        //     pruebaString: "Me llamo Pepito",
+        //     pruebaString2: "Me llamo Jose",
+        //     pruebaInt2: 3832,
+
+        // },
     };
 };
 //Muestra el curso y también los que sean indefinidos, nulos o no tengan tamaño si son array. Mostrará un mensaje en él
 function muestraCurso(curso) {
-    console.log(`El Objeto contiene los siguientes datos:\n`);
+    console.log(`%cEl Objeto contiene los siguientes datos:\n`, 'color: red; font-weight: bold;');//He cambiado el color para distinguirlo mejor 
     for (const clave in curso) {
-        //Este if se asegura que todas que son directamente del objeto curso, no propiedades heredadas del prototipo.
+        //Este if se asegura El tipo de dato es un objetoue todas que son directamente del objeto curso, no propiedades heredadas del prototipo.
         if (Object.hasOwnProperty.call(curso, clave)) {
             const element = curso[clave];
             if (element === undefined || element === null) { // Verifica si es undefined o null
@@ -73,7 +87,11 @@ function muestraCurso(curso) {
             } else if (Array.isArray(element)) { // Verifica si es un array
                 console.log(`El tipo de dato es un array: ${clave} => ${JSON.stringify(element)}`);
             } else if (typeof element === 'object') { // Verifica si es un objeto
-                console.log(`El tipo de dato es un objeto: ${clave} => ${JSON.stringify(element)}`);
+                console.log('%cEl tipo de dato es un objeto:', 'color: blue; font-weight: bold;');
+                    if (element !== null && element !== undefined && element.length !== 0) {
+                    muestraCurso(element);
+                    console.log('%cTerminado el muestreo del objeto.', 'color: blue; font-weight: bold;');
+                }
             }
         }
     }
