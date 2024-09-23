@@ -96,6 +96,4 @@ function muestraCurso(curso) {
         }
     }
 };
-
-
 //Para saber si es un array esta antes de comprobar que sera un objeto porque con el typeof tambien sale como que es un objeto y para que descarte primero si es un array
