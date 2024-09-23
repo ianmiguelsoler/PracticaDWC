@@ -11,7 +11,7 @@ var curso = creaCurso(nombreCurso, anoCurso, descCurso, alumnado);
 muestraCurso(curso)
 
 //* Funciones
-//Función que es capaz de crear un curso
+//Función que es capaz de crear un curso.
 function creaCurso(nombreCurso, anoCurso, descCurso, alumnado){
     return {
         nombreCurso: nombreCurso,
@@ -20,7 +20,7 @@ function creaCurso(nombreCurso, anoCurso, descCurso, alumnado){
         alumnado: alumnado
     };
 };
-//Muestra el curso y también los que sean indefinidos, nulos o no tengan tamaño si son array. Mostrará un mensaje en él
+//Muestra el curso y también los que sean indefinidos, nulos o no tengan tamaño si son array. Mostrará un mensaje en él.
 function muestraCurso(curso){
     console.log(`El Curso Contiene esto:\n`)
     for (const clave in curso) {

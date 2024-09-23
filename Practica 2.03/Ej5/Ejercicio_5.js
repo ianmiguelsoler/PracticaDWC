@@ -38,11 +38,11 @@ var alumnado = []
 
 //? Solución
 var curso = creaCurso(nombreCurso, anoCurso, descCurso, alumnado, discente);
-curso.matricular(discente);  // Matriculamos al discente
+curso.matricular(discente);  // Matriculamos al discente.
 muestraCurso(curso);
 
 //* Funciones
-//Función que es capaz de crear un curso
+//Función que es capaz de crear un curso.
 function creaCurso(nombreCurso, anoCurso, descCurso, alumnado) {
     return {
         nombreCurso: nombreCurso,
@@ -54,9 +54,15 @@ function creaCurso(nombreCurso, anoCurso, descCurso, alumnado) {
             pruebaString: "Me llamo Pepito",
             pruebaString2: "Me llamo Jose",
             pruebaInt2: 3832,
-
+            // objetoPruebaDentro: {
+            //     hola: 1,
+            //     estoy: "Me llamo Pepito",
+            //     dentro: "Me llamo Jose",
+            //     objeto: 3832,
+    
+            // },
         },
-        // Método para matricular un discente al curso
+        // Método para matricular un discente al curso.
         matricular: function (discenteM) {
             this.alumnado.push(discenteM);
         },
@@ -66,27 +72,27 @@ function creaCurso(nombreCurso, anoCurso, descCurso, alumnado) {
         //     pruebaString2: "Me llamo Jose",
         //     pruebaInt2: 3832,
 
-        // },
+        // },pruebaInt2
     };
 };
-//Muestra el curso y también los que sean indefinidos, nulos o no tengan tamaño si son array. Mostrará un mensaje en él
+//Muestra el curso y también los que sean indefinidos, nulos o no tengan tamaño si son array. Mostrará un mensaje en él.
 function muestraCurso(curso) {
-    console.log(`%cEl Objeto contiene los siguientes datos:\n`, 'color: red; font-weight: bold;');//He cambiado el color para distinguirlo mejor 
+    console.log(`%cEl Objeto contiene los siguientes datos:\n`, 'color: red; font-weight: bold;');//He cambiado el color para distinguirlo mejor.
     for (const clave in curso) {
         //Este if se asegura El tipo de dato es un objetoue todas que son directamente del objeto curso, no propiedades heredadas del prototipo.
         if (Object.hasOwnProperty.call(curso, clave)) {
             const element = curso[clave];
-            if (element === undefined || element === null) { // Verifica si es undefined o null
+            if (element === undefined || element === null) { // Verifica si es undefined o null.
                 console.log(`El valor es ${element === undefined ? 'undefined' : 'null'}: ${clave}`);
-            } else if (typeof element === 'function') { // Verifica si es una función
+            } else if (typeof element === 'function') { // Verifica si es una función.
                 console.log(`El elemento es una función: ${clave}`);
-            } else if (typeof element === 'string') { // Verifica si es un string
+            } else if (typeof element === 'string') { // Verifica si es un string.
                 console.log(`El tipo de dato es un string: ${clave} => ${JSON.stringify(element)}`);
-            } else if (typeof element === 'number') { // Verifica si es un número
+            } else if (typeof element === 'number') { // Verifica si es un número.
                 console.log(`El tipo de dato es un número: ${clave} => ${JSON.stringify(element)}`);
             } else if (Array.isArray(element)) { // Verifica si es un array
                 console.log(`El tipo de dato es un array: ${clave} => ${JSON.stringify(element)}`);
-            } else if (typeof element === 'object') { // Verifica si es un objeto
+            } else if (typeof element === 'object') { // Verifica si es un objeto.
                 console.log('%cEl tipo de dato es un objeto:', 'color: blue; font-weight: bold;');
                     if (element !== null && element !== undefined && element.length !== 0) {
                     muestraCurso(element);
@@ -96,4 +102,4 @@ function muestraCurso(curso) {
         }
     }
 };
-//Para saber si es un array esta antes de comprobar que sera un objeto porque con el typeof tambien sale como que es un objeto y para que descarte primero si es un array
+//Para saber si es un array esta antes de comprobar que sera un objeto porque con el typeof tambien sale como que es un objeto y para que descarte primero si es un array.

@@ -14,7 +14,7 @@ const curso2 = creaCurso(nombreCurso, anoCurso, descCurso, alumnado);
 console.log("El objeto creado es:", curso);
 
 //* Funciones
-//Función que se le pasan los datos y te crea un Curso
+//Función que se le pasan los datos y te crea un Curso.
 function creaCurso(nombreCurso, anoCurso, descCurso, alumnado){
     return {
         nombreCurso: nombreCurso,

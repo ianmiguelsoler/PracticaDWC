@@ -42,27 +42,27 @@ curso.matricular(discente);  // Matriculamos al discente
 muestraCurso(curso);
 
 //* Funciones
-//Función que es capaz de crear un curso
+//Función que es capaz de crear un curso.
 function creaCurso(nombreCurso, anoCurso, descCurso, alumnado) {
     return {
         nombreCurso: nombreCurso,
         anoCurso: anoCurso,
         descCurso: descCurso,
         alumnado: alumnado,
-        // Método para matricular un discente al curso
+        // Método para matricular un discente al curso.
         matricular: function (discenteM) {
             this.alumnado.push(discenteM);
         }
     };
 };
-//Muestra el curso y también los que sean indefinidos, nulos o no tengan tamaño si son array. Mostrará un mensaje en él
+//Muestra el curso y también los que sean indefinidos, nulos o no tengan tamaño si son array. Mostrará un mensaje en él.
 function muestraCurso(curso) {
     console.log(`El Curso Contiene esto:\n`);
     for (const clave in curso) {
         //Este if se asegura que todas que son directamente del objeto curso, no propiedades heredadas del prototipo.
         if (Object.hasOwnProperty.call(curso, clave)) {
             const element = curso[clave];
-            // Solo mostramos propiedades que no sean funciones, he tenido que añadir esto para que no intente mostrar el método
+            // Solo mostramos propiedades que no sean funciones, he tenido que añadir esto para que no intente mostrar el método.
             if(typeof element !== 'function'){
             if (element !== null && element !== undefined && (Array.isArray(element) ? element.length !== 0 : true)) {
                 console.log(`${clave} => ${JSON.stringify(element)}`);
