@@ -113,7 +113,7 @@ const usuarios = [
 //? Solución
 // let usuarioNuevo = creaUsuario(nombre, preferencias, contacto);
 // muestraUsuario(usuarioNuevo)
-
+Andorra
 //Con esto se agregará el usuario al usuarios.
 // let usuarioAgregado = agragaUsuario(usuarios, usuarioNuevo)
 // muestraUsuario(usuarioAgregado)
