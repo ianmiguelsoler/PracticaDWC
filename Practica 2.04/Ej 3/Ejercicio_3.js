@@ -117,10 +117,24 @@ const usuarios = [
 //Con esto se agregará el usuario al usuarios.
 // let usuarioAgregado = agragaUsuario(usuarios, usuarioNuevo)
 // muestraUsuario(usuarioAgregado)
+
+
 //Mostrara el array de objetos filtrado
-console.log("Los usuarios mayores de edad son los siguientes:")
-let filtrado = filtrarPorEdad(usuarios, 18)
-muestraUsuario(filtrado)
+// console.log("Los usuarios mayores de edad son los siguientes:")
+// let filtradoPorEdad = filtrarPorEdad(usuarios, 18)
+// muestraUsuario(filtradoPorEdad)
+
+
+// console.log("Los usuarios que contienen el correo de Yahoo son los siguientes:")
+// let filtradoCorreo = filtrarPorCorreo(usuarios, "yahoo")
+// muestraUsuario(filtradoCorreo)
+
+console.log("Los usuarios mayores de edad, que son de España y tengan de preferencia el tema claro son los siguientes:")
+let tema = "claro"
+let pais = "España"
+let edad = 18
+let filtradoTema = filtrarPorTema(usuarios,edad, tema, pais);
+muestraUsuario(filtradoTema);
 
 //* Funciones
 function creaUsuario(nombre, preferencias, contacto) {
@@ -170,9 +184,23 @@ function agragaUsuario(usuario, usuarioAgregado){
     let usuarioNuevo = { ...usuario, ...usuarioAgregado}
     return usuarioNuevo
 };
-//Función que filtra los que son mayores de edad y se guarda el objeto en otro array de objetos
+//Función que filtra los que son mayores de edad y se guarda el objeto en otro array de objetos.
 function filtrarPorEdad(usuarios, edadMinima) {
   return usuarios
     .filter(usuario => usuario.preferencias.edad >= edadMinima)
-    .map(usuario => ({ ...usuario }));
+    // .map(usuario => ({ ...usuario }));
+}
+//Función que filtra el array de usuarios que tiene el correo electronico del servidor Yahoo.
+function filtrarPorCorreo(usuarios, dominio) {
+  return usuarios
+    .filter(usuario => usuario.contacto.correoelectronico.includes(dominio))
+    // .map(usuario => ({ ...usuario }));
+}
+//Función que filtra el array buscando que sean de españa y mayores de edad.
+function filtrarPorTema(usuarios, edad, tema, pais){
+  return usuarios.filter(usuario => 
+    usuario.preferencias.edad >= edad && 
+    usuario.preferencias.tema.toLowerCase() === tema.toLowerCase() && 
+    usuario.contacto.direccion.pais.toLowerCase() === pais.toLowerCase()
+  );
 }
