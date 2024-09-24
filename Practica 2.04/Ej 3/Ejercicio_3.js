@@ -117,6 +117,10 @@ const usuarios = [
 //Con esto se agregará el usuario al usuarios.
 // let usuarioAgregado = agragaUsuario(usuarios, usuarioNuevo)
 // muestraUsuario(usuarioAgregado)
+//Mostrara el array de objetos filtrado
+console.log("Los usuarios mayores de edad son los siguientes:")
+let filtrado = filtrarPorEdad(usuarios, 18)
+muestraUsuario(filtrado)
 
 //* Funciones
 function creaUsuario(nombre, preferencias, contacto) {
@@ -167,16 +171,8 @@ function agragaUsuario(usuario, usuarioAgregado){
     return usuarioNuevo
 };
 //Función que filtra los que son mayores de edad y se guarda el objeto en otro array de objetos
-// function filtrarPorEdad(usuarios, edadMinima) {
-//     // Extraer la edad del objeto
-//     const edad = usuarios.preferencias.edad;
-    
-//     // Comprobar si la edad es mayor o igual a la edad mínima
-//     if (edad >= edadMinima) {
-//       return usuarios;
-//     } else {
-//       return null;
-//     }
-//   }
-// let filtrado = filtrarPorEdad(usuarios, 18)
-// muestraUsuario(filtrado)
+function filtrarPorEdad(usuarios, edadMinima) {
+  return usuarios
+    .filter(usuario => usuario.preferencias.edad >= edadMinima)
+    .map(usuario => ({ ...usuario }));
+}
