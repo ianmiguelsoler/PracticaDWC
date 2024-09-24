@@ -6,11 +6,11 @@ const arrayCadenas = ["Ian", "Pedro", "Miguel", "Francisco", "Julio"];
 //? Solución
 // Array que pone en mayúsculas todo el array usando spread operator y map.
 const arrayCadenasMayus = [...arrayCadenas].map(mostrarEnMayuscula);
-console.log(arrayCadenasMayus);
+imprimirArrayFormateado(arrayCadenasMayus)
 
-// Array ordenado con sort, usando spread operator para no modificar el original.
-const arrayOrdenado = [...arrayCadenasMayus].sort();
-console.log(arrayOrdenado);
+// Array ordenado con sort, usando spread operator para no modificar el original y añadiendo reverse para que los tenga ordenados alfabeticamente pero al revés.
+const arrayOrdenado = [...arrayCadenasMayus].sort().reverse();
+imprimirArrayFormateado(arrayOrdenado);
 
 // Array mapeado a JSON con spread operator y desestructuración.
 const arrayJSON = arrayCadenas.map((nombre, indice) => {
@@ -30,4 +30,8 @@ function mostrarEnMayuscula(valor) {
 const nombresConId = arrayJSON.map(({ id, nombre }) => {
     return `ID: ${id}, Nombre: ${nombre}`;
 });
-console.log(nombresConId);
+imprimirArrayFormateado(nombresConId);
+//Imprime el array de forma formateada
+function imprimirArrayFormateado(array) {
+    console.log("[" + array.join(", ") + "]");
+}
