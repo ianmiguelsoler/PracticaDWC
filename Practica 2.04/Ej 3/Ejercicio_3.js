@@ -74,7 +74,7 @@ const usuarios = [
       direccion: {
         calle: "Calle inexistente, 6",
         localidad: "Burdeos",
-        pais: "Francia",
+        pais: "España",
       },
       correoelectronico: "correofalso@gmail.com",
       telefono: "232547859",
@@ -109,29 +109,9 @@ const usuarios = [
 ];
 
 //? Solución
-// let usuarioNuevo = creaUsuario(nombre, preferencias, contacto);
-// muestraUsuario(usuarioNuevo)
-//Con esto se agregará el usuario al usuarios.
-// let usuarioAgregado = agragaUsuario(usuarios, usuarioNuevo)
-// muestraUsuario(usuarioAgregado)
 
-//Mostrara el array de objetos filtrado
-// console.log("Los usuarios mayores de edad son los siguientes:")
-// let filtradoPorEdad = filtrarPorEdad(usuarios, 18)
-// muestraUsuario(filtradoPorEdad)
-
-// console.log("Los usuarios que contienen el correo de Yahoo son los siguientes:")
-// let filtradoCorreo = filtrarPorCorreo(usuarios, "yahoo")
-// muestraUsuario(filtradoCorreo)
-
-console.log(
-  "Los usuarios mayores de edad, que son de España y tengan de preferencia el tema claro son los siguientes:"
-);
-let tema = "claro";
-let pais = "España";
-let edad = 18;
-let filtradoTema = filtrarPorTema(usuarios, edad, tema, pais);
-muestraUsuario(filtradoTema);
+//LLamada a la función de demostración
+demostracion(creaUsuario,muestraUsuario,agragaUsuario,filtrarPorEdad,filtrarPorCorreo,filtrarPorTema,filtrarUsuariosConDatosIncompletos,agregaApellido,agregaCodigo,usuarios)
 
 //* Funciones
 function creaUsuario(nombre, preferencias, contacto) {
@@ -210,32 +190,91 @@ function filtrarPorTema(usuarios, edad, tema, pais) {
 }
 
 //Función que filtra el array buscando que no tengan datos.
-function filtrarEspaciosVacios(usuario) {
-  // for (const clave in usuario) {
-  //   if (Object.hasOwnProperty.call(usuario, clave)) {
-  //     const element = usuario[clave];
-  //     if (typeof element === "object" && element !== null) {
-  //       for (const subclave in element) {
-  //         if (Object.hasOwnProperty.call(element, subclave)) {
-  //           //Añado trim() para que no se confunda el codigo si hay algun ejemplo en el que esta guardado un espacio pero no contiene nada
-  //           if(!element[subclave] || element[subclave].trim() === ''){
-  //             return false;
-  //           }
-  //         }
-  //       }
-  //     }
-  //     else{
-  //       // Verifica si el valor es vacío
-  //       if (!element || element.trim() === '') {
-  //         return false; // Hay un valor vacío
-  //       }
-  //     }
-  //   }
-  // }
-  // return usuarios.filter(
-  //   (usuario) =>
-  //     usuario.preferencias.edad >= edad &&
-  //     usuario.preferencias.tema.toLowerCase() === tema.toLowerCase() &&
-  //     usuario.contacto.direccion.pais.toLowerCase() === pais.toLowerCase()
-  // );
+function filtrarUsuariosConDatosIncompletos(usuarios) {
+  return usuarios.filter((usuario) => {
+    return (
+      !usuario.nombre || // Verifica si el nombre está vacío.
+      !usuario.preferencias.tema || // Verifica si el tema está vacío.
+      !usuario.preferencias.idioma || // Verifica si el idioma está vacío.
+      !usuario.preferencias.edad || // Verifica si la edad está vacía.
+      !usuario.contacto.direccion.calle || // Verifica si la calle está vacía.
+      !usuario.contacto.direccion.localidad || // Verifica si la localidad está vacía.
+      !usuario.contacto.direccion.pais || // Verifica si el país está vacío.
+      !usuario.contacto.correoelectronico || // Verifica si el correo está vacío.
+      !usuario.contacto.telefono // Verifica si el teléfono está vacío.
+    );
+  });
+}
+
+function agregaApellido(usuarios) {
+  let valorPorDefecto = "No indicado";
+  return usuarios.map(usuario => {
+    return { 
+      ...usuario, // Mantenemos todas las propiedades actuales del usuario.
+      apellidos: valorPorDefecto // Añadimos o sobrescribimos el campo "apellidos".
+    };
+  });
+}
+//Función que agrega código a la propiedad dirección, llamada "codigo"
+function agregaCodigo(usuarios) {
+  let codigo = "00000"
+  return usuarios.map(usuario => {
+    return { 
+      ...usuario,
+      contacto:{
+        ...usuario.contacto,
+        direccion:{
+          ...usuario.contacto.direccion,
+          'codigo' : codigo
+        }
+      }
+    };
+  });
+}
+
+
+//Función para pasar todas las funciones y comprobar el código
+function demostracion(creaUsuario,muestraUsuario,agragaUsuario, filtrarPorEdad, filtrarPorCorreo, filtrarPorTema, filtrarUsuariosConDatosIncompletos,agregaApellido,agregaCodigo, usuarios){
+
+//!Usuario Agregado
+let usuarioNuevo = creaUsuario(nombre, preferencias, contacto);
+muestraUsuario(usuarioNuevo)
+let usuarioAgregado = agragaUsuario(usuarios, usuarioNuevo)
+muestraUsuario(usuarioAgregado)
+
+//!Filtrados por edad
+//Mostrara el array de objetos filtrado
+// console.log("Los usuarios mayores de edad son los siguientes:")
+// let filtradoPorEdad = filtrarPorEdad(usuarios, 18)
+// muestraUsuario(filtradoPorEdad)
+
+//!Filtrados por correo
+// console.log("Los usuarios que contienen el correo de Yahoo son los siguientes:")
+// let filtradoCorreo = filtrarPorCorreo(usuarios, "yahoo")
+// muestraUsuario(filtradoCorreo)
+
+//!Filtrados por el tema, edad y país
+// console.log(
+//   "Los usuarios mayores de edad, que son de España y tengan de preferencia el tema claro son los siguientes:"
+// );
+// let tema = "claro";
+// let pais = "España";
+// let edad = 18;
+// let filtradoTema = filtrarPorTema(usuarios, edad, tema, pais);
+// muestraUsuario(filtradoTema);
+
+//!Usuarios Sin espacios
+// console.log("Los usuarios con un dato en la ficha que sea vacio son los siguientes:");
+// let arrayFiltradosConEspacios = filtrarUsuariosConDatosIncompletos(usuarios);
+// muestraUsuario(arrayFiltradosConEspacios)
+
+//!Apellidos
+// console.log("Se ha añadido una clave llamada apellidos, así como se muestra a continuación:");
+// let arrayApellidos = agregaApellido(usuarios);
+// muestraUsuario(arrayApellidos)
+
+//!Código
+// console.log("Se ha añadido codigo dentro de dirección, así como se muestra a continuación:");
+// let arrayCodigo = agregaCodigo(usuarios);
+// muestraUsuario(arrayCodigo)
 }
