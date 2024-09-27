@@ -1,19 +1,13 @@
 "use strict";
 
-//! Variables
-
-//? Solución
-const cani = cadenaCani("Pedro es un cani y lo sabes");
-console.log("Su cadena de texto se ha vuelto cani, te lo muestro a continuación:\n", cani);
-
 //* Funciones
+//Función que se le pasa una cadena, cambia varios carácteres y los modifica.
 function cadenaCani(cadenaCani) {
     var resultado = "";
-    //Hacemos un array recorriendo todo el string caracter a caracter
+    //Hacemos un array recorriendo todo el string carácter a carácter.
     for (let contador = 0; contador < cadenaCani.length; contador++) {
         let caracter = cadenaCani[contador];
-
-        // Si el carácter está en mayúsculas, lo cambiamos a minúsculas
+        // Si el carácter está en mayúsculas, lo cambiamos a minúsculas.
         if (caracter === caracter.toUpperCase()) {
             if(caracter === 'c' || caracter === 'C'){
                 resultado += 'k'
@@ -22,7 +16,7 @@ function cadenaCani(cadenaCani) {
                 resultado += caracter.toLowerCase();
             }
         } 
-        // Si está en minúsculas, lo cambiamos a mayúsculas
+        // Si está en minúsculas, lo cambiamos a mayúsculas.
         else {
             if(caracter === 'c' || caracter === 'C'){
                 resultado += 'k'
@@ -32,14 +26,13 @@ function cadenaCani(cadenaCani) {
             }
         }
     }
+    //Código que randomiza la cantidad de H que se agregaran al final de la frase.
     let cuantasH = (Math.random() * 4) + 1;
         for (let contador = 0; contador < cuantasH; contador++) {
             resultado += 'H';  
         }
-    return resultado; // Devolvemos el string modificado
+    return resultado; // Devolvemos el string modificado.
 };
 
-// // Exporta los elementos situados entre las llaves.
-// export { sumar, restar, multiplicar };
-// // Exporta el elemento con un seudónimo.
-// export { multiplicar as multi };
+//Exportamos la cadena Cani.
+export { cadenaCani };

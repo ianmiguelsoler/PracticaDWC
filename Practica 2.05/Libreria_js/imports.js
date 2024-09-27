@@ -1,14 +1,14 @@
 // Importa el elemento suma de Calculadora.js.
-import { ejercicio1 } from "./Ejercicio_1.js";
+import { cadenaCani } from "./Ejercicio_1.js";
 
 // Importa varios elementos de una vez.
-import { ejercicio2 } from "./Ejercicio_2.js";
+// import { ejercicio2 } from "./Ejercicio_2.js";
 
 // Importa asiganándole un alias.
-import { ejercicio2 as ej2 } from "./Ejercicio_3.js";
+// import { ejercicio2 as ej2 } from "./Ejercicio_3.js";
 
 // Importa todos los elementos en un objeto.
-import * as Feo from "./Ejercicio_4.js";
+// import * as Feo from "./Ejercicio_4.js";
 
 /* console.log(sumar(5, 5));
 console.log(add(5, 5));
@@ -16,7 +16,10 @@ console.log(Feo.restar(5, 5));
 console.log(Feo.dividir(85, 0));
 console.log(multi(5, 5)); */
 
-
+//!Ejercicio 1.
+//?Solución:
+const cani = cadenaCani("Pedro es un cani y lo sabes");
+console.log("Su cadena de texto se ha vuelto cani, te lo muestro a continuación:\n", cani);
 //Ejecución de funciones importadas.
 
 /* console.log(sumar(5, 5));
