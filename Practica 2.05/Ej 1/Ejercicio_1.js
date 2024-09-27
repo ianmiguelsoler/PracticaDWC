@@ -1,6 +1,6 @@
 "use strict";
 
-import { cadenaCani } from "../Biblioteca_JS/imports.js";
+import { cadenaCani } from "../Biblioteca_JS/funciones.js";
 
 //!Ejercicio 2.
 //?Solución:

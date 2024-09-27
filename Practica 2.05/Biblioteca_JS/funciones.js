@@ -80,6 +80,39 @@ function temporizador(minutos, segundos) {
   }, 1000);
 }
 
+//!-------------------------------Ejercicio 3-----------------------------------
+
+
+function solicitarDni(dni){
+  var resultadoDniGuardados = [];
+  var dni = ""
+  if(dni === "-1"){
+    let idIntervaloCerrado = setTimeout(() => {
+      clearInterval(idPedirDni);
+    }, 10000);
+    console.log("Todos los Dni introducidos son estos:");
+    var contador = 1
+    for (const clave in resultadoDniGuardados) {
+      if (Object.hasOwnProperty.call(resultadoDniGuardados, clave)) {
+        const element = resultadoDniGuardados[clave];
+        console.log(`${contador}-. ${element}`);
+        contador++;
+      }
+    }
+  }
+  else{
+    
+  }
+  dni = prompt("Escriba un Dni válido:");
+  var idPedirDni = setTimeout(() => {
+        solicitarDni(dni);
+      }, 5000);
+
+};
+
+
+
+
 //Ejecución de funciones importadas.
 
 /* console.log(sumar(5, 5));
@@ -160,5 +193,5 @@ console.log(`Mi arma de destrucción masiva favorita es ${informacion}`); */
 
 
 
-//!Exportamos la función temporizador
-export { cadenaCani ,temporizador };
+//!Exportamos las funciones necesarias para la solución.
+export { cadenaCani ,temporizador, solicitarDni};
