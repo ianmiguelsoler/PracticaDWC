@@ -164,8 +164,6 @@ function calculaNumeroDni() {
   let dniLetra = prompt(
     "Escriba una letra del DNI válida (T-R-W-A-G-M-Y-F-P-D-X-B-N-J-Z-S-Q-V-H-L-C-K-E):"
   );
-
-
   if (dniLetra.length == 1) {
     const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
     var resultadoDniGuardados = [];
@@ -209,89 +207,49 @@ function calculaNumeroDni() {
   }
 }
 
-//Ejecución de funciones importadas.
 
-/* console.log(sumar(5, 5));
-console.log(add(5, 5));
-console.log(Feo.restar(5, 5));
-console.log(Feo.dividir(85, 0));
-console.log(multi(5, 5)); */
+//!-------------------------------Ejercicio 6-----------------------------------
 
-/*****************************************************************
- *  El objeto Window.
- *
- *  Automatización de tareas.
- *
- *  setInterval(función,tiempo,parámetros)  → Repite una acción.
- *  setTimeout(función,tiempo, parámetros)  → Programa una acción.
- *  clearTimeout/clearInterval(id) 	        → Elimina acción.
- *
- */
+function calculaNumerosPrimos() {
+  //!Variables
+  var guardaPrimo = []
+  var numerosTotales = 0
 
-let idMostrar = 0;
-let idDespedir = 0;
+  //Función que valida que sea número primo.
+  function esPrimo(numero) {
+    if (numero < 2) return false; // 0 y 1 no son primos.
+    for (var i = 2; i <= Math.sqrt(numero); i++) {
+      if (numero % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+  //Un palindromo es una cadena que empieza y termina igual.
+  function esPalindromo(num) {
+    // Convertir el número a una cadena y verificar si es igual al revés.
+    let str = num.toString();
+    return str === str.split('').reverse().join('');
+  }
+  for (let contador = 1; contador <= 100000; contador++) {
+    if (esPrimo(contador) && esPalindromo(contador)) {
+      guardaPrimo.push(contador); // Agregar número primo y palíndromo al array.
+      numerosTotales++;
+    }
+    
+  }
+  console.log("Números que son a la vez primos y palíndromos hasta 100,000:");
+  console.log(guardaPrimo.join(', '));
+  console.log(`El total de números que cumplen los criterios son: ${numerosTotales}`);
+}
 
-// const mostrarMensaje = (mensaje) => {
-//   console.log(`${Date.now()} Mostrando ${mensaje}.`);
-// };
 
-// const mostrarDespedida = (mensaje) => {
-//   console.log(mensaje);
-// };
-
-// Función sin parámetros.
-/* const idMostrar = setInterval(mostrarMensaje, 1000); */
-
-// Función con parámetros.
-/* idMostrar = setInterval(mostrarMensaje, 1000, "¡Hola, feos!"); */
-
-// Función flecha. Versión recomendable a partir de ahora.
-/* idMostrar = setInterval(() => {
-  mostrarMensaje("¡Hola desde una función flecha!");
-}, 1000); */
-
-// Mostrar el identificador del setInterval.
-// console.log(`El identificador del setInterval es: ${idMostrar}`);
-
-// Realizar una tarea transcurrido un tiempo.
-/* idDespedir = setTimeout(mostrarDespedida, 5000, "¡Adiós, feos!"); */
-
-// Versión con función flecha (USAR SIEMPRE).
-/* idDespedir = setTimeout(() => {
-  mostrarDespedida("¡Adiós desde una función flecha, feos!");
-}, 5000); */
-
-// Detener el intervalo anterior.
-/* idDespedir = setTimeout(() => {
-  clearInterval(idMostrar);
-}, 10000); */
-
-/************************************************************
- *   Interactuar con el usuario (NO UTILIZAR EN LO SUCESIVO).
- *
- *  alert() 	→ Abre ventana de información.
- *  confirm() 	→ Abre una ventana de confirmación.
- *  prompt() 	→ Recoge información del usuario.
- *
- * */
-
-//alert("¡Hola, feos"); // Los navegadores suelen bloquearlos. No se puede confiar el ellos.
-
-/* const decision = confirm(
-  "¿Está seguro de borrar este registro de la base de datos?"
-);
-
-console.log(`El usuario ha decidio que ${decision}.`); // Es booleano. */
-
-/* const informacion = prompt("¿Cuál es tu arma de destrucción masiva favorita?");
-
-console.log(`Mi arma de destrucción masiva favorita es ${informacion}`); */
-
-//!Exportamos las funciones necesarias para la solución.
+//!Exportamos las funciones necesarias para las solución.
 export {
   cadenaCani,
   temporizador,
   solicitarDni,
   mostrarFecha,
   calculaNumeroDni,
+  calculaNumerosPrimos
 };
