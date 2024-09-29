@@ -125,11 +125,11 @@ function solicitarDni() {
 }
 
 //!-------------------------------Ejercicio 4-----------------------------------
-// Función principal que envia la fecha actual cada 3 segundos
+// Función principal que envia la fecha actual cada 3 segundos.
 function mostrarFecha() {
   const mostrarFecha = () => {
     const hoy = new Date();
-    const dia = hoy.getDate(); // Día del mes (1-31)
+    const dia = hoy.getDate(); // Día del mes (1-31).
     const meses = [
       "enero",
       "febrero",
@@ -144,15 +144,69 @@ function mostrarFecha() {
       "noviembre",
       "diciembre",
     ];
-    const mes = meses[hoy.getMonth()]; // Obtener el mes en texto
-    const anio = hoy.getFullYear(); // Año
+    const mes = meses[hoy.getMonth()]; // Obtener el mes en texto.
+    const anio = hoy.getFullYear(); // Año.
     console.log(`La fecha es: ${dia} de ${mes} de ${anio}.`);
   };
 
-  // Mostrar la fecha una vez después de 3 segundos
+  // Mostrar la fecha una vez después de 3 segundos.
   setTimeout(() => {
     mostrarFecha();
   }, 3000);
+}
+
+//!-------------------------------Ejercicio 5-----------------------------------
+
+function calculaNumeroDni() {
+  //!Variables
+  var totalSacados = 0
+  var totalNoSacados = 0
+  let dniLetra = prompt(
+    "Escriba una letra del DNI válida (T-R-W-A-G-M-Y-F-P-D-X-B-N-J-Z-S-Q-V-H-L-C-K-E):"
+  );
+
+
+  if (dniLetra.length == 1) {
+    const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+    var resultadoDniGuardados = [];
+
+    // Función para calcular la letra de control de un DNI.
+    function calcularLetra(dni) {
+      return letras[dni % 23];
+    }
+    //Primero compara que la letra introducida este dentro de las opciones y despues recorreo todos los dni posibles dentro de ese intervalo y calcula la letra.
+    if (letras.includes(dniLetra)) {
+      for (let contador = 48357001; contador < 48360000; contador++) {
+        let dniCalculado = calcularLetra(contador);
+        totalNoSacados++;
+        if (dniCalculado.includes(dniLetra)) {
+          let dniConLetra = contador + dniLetra;
+          //Lo guardo con push en el array.
+          resultadoDniGuardados.push(dniConLetra)
+          totalSacados++;
+        }
+      }
+      if (resultadoDniGuardados.length > 0) {
+        console.log("DNI coincidentes con la letra introducida:");
+        for (let i = 0; i < resultadoDniGuardados.length; i++) {
+          console.log(`El DNI ${i + 1} es: ${resultadoDniGuardados[i]}`);
+        }
+        console.log(`%cHa habido un total de ${totalSacados} DNI sacados y un total de ${totalNoSacados-totalSacados} que no tenian la misma letra`,"color: blue; font-weight: bold;");
+      } else {
+        console.log("No se encontraron DNIs con esa letra.");
+      }
+    } else {
+      console.log(
+        "Tiene que ser una letra valida, cualquiera de estas te puede servir: \n(T-R-W-A-G-M-Y-F-P-D-X-B-N-J-Z-S-Q-V-H-L-C-K-E)"
+      );
+      calculaNumeroDni();
+    }
+  } else {
+    console.log(
+      "Tiene que ser una letra valida, cualquiera de estas te puede servir: \n(T-R-W-A-G-M-Y-F-P-D-X-B-N-J-Z-S-Q-V-H-L-C-K-E)"
+    );
+    calculaNumeroDni();
+  }
 }
 
 //Ejecución de funciones importadas.
@@ -234,4 +288,10 @@ console.log(`El usuario ha decidio que ${decision}.`); // Es booleano. */
 console.log(`Mi arma de destrucción masiva favorita es ${informacion}`); */
 
 //!Exportamos las funciones necesarias para la solución.
-export { cadenaCani, temporizador, solicitarDni, mostrarFecha };
+export {
+  cadenaCani,
+  temporizador,
+  solicitarDni,
+  mostrarFecha,
+  calculaNumeroDni,
+};
