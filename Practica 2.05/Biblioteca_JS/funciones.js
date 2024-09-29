@@ -82,33 +82,43 @@ function temporizador(minutos, segundos) {
 
 //!-------------------------------Ejercicio 3-----------------------------------
 
+function solicitarDni() {
+  const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+  let resultadoDniGuardados = [];
 
-function solicitarDni(dni){
-  var resultadoDniGuardados = [];
-  var dni = ""
-  if(dni === "-1"){
-    let idIntervaloCerrado = setTimeout(() => {
-      clearInterval(idPedirDni);
-    }, 10000);
-    console.log("Todos los Dni introducidos son estos:");
-    var contador = 1
-    for (const clave in resultadoDniGuardados) {
-      if (Object.hasOwnProperty.call(resultadoDniGuardados, clave)) {
-        const element = resultadoDniGuardados[clave];
-        console.log(`${contador}-. ${element}`);
-        contador++;
+  // Función para calcular la letra de control de un DNI
+  function calcularLetra(dni) {
+      return letras[dni % 23];
+  }
+
+  // Función principal que solicita el DNI
+  function pedirDni() {
+      let dni = prompt("Escriba un DNI válido (8 números) o -1 para terminar:");
+      
+      // Si se ingresa -1, detener el proceso y mostrar los resultados
+      if (dni === "-1") {
+          clearInterval(intervalo);
+          console.log("Todos los DNIs introducidos son:");
+          resultadoDniGuardados.forEach((letra, index) => {
+              console.log(`${index + 1}.- ${letra}`);
+          });
+      } else {
+          // Validar si el DNI tiene 8 dígitos
+          //?/^\d{8}$/.test(dni) --> Es una forma de validar un número específico de dígitos, en este caso 8. [.test(dni) comprueba si la cadena dni cumple con el patrón definido]
+          if (dni.length === 8 && /^\d{8}$/.test(dni)) {
+              let letra = calcularLetra(dni);
+              resultadoDniGuardados.push( dni + letra);
+              console.log(`DNI: ${dni} - Letra: ${letra}`);
+          } else {
+              console.error("¡Debe ser un DNI de 8 números!");
+          }
       }
-    }
   }
-  else{
-    
-  }
-  dni = prompt("Escriba un Dni válido:");
-  var idPedirDni = setTimeout(() => {
-        solicitarDni(dni);
-      }, 5000);
 
-};
+  // Usar setInterval para pedir DNI cada 5 segundos
+  let intervalo = setInterval(pedirDni, 5000);
+}
+
 
 
 
