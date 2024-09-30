@@ -217,14 +217,19 @@ function calculaNumerosPrimos() {
 
   //Función que valida que sea número primo.
   function esPrimo(numero) {
-    if (numero < 2) return false; // 0 y 1 no son primos.
-    for (var i = 2; i <= Math.sqrt(numero); i++) {
-      if (numero % i === 0) {
-        return false;
-      }
+    let esPrimo = true; // Asumimos que el número es primo inicialmente
+    if (numero < 2) {
+        esPrimo = false; // 0 y 1 no son primos
+    } else {
+        for (var i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i === 0) {
+                esPrimo = false; // Encontramos un divisor, no es primo
+                break; // Salimos del bucle
+            }
+        }
     }
-    return true;
-  }
+    return esPrimo; // Retornamos el resultado
+}
   //Un palindromo es una cadena que empieza y termina igual.
   function esPalindromo(num) {
     // Convertir el número a una cadena y verificar si es igual al revés.
